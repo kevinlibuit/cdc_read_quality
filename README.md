@@ -1,10 +1,11 @@
 # cdc_read_quality
 Generates read-quality metrics using run_assembly_readMetrics.pl from the CDC CG-Pipeline for reads in a specified BaseSpace project.
 
-Dependencies: 
-[CG-Pipeline](https://github.com/lskatz/CG-Pipeline)
+Dependencies: <br/>
+[CG-Pipeline](https://github.com/lskatz/CG-Pipeline), [BaseMount](https://basemount.basespace.illumina.com/)
 
-Usage:
-cdc_qual_metrics.sh -p <BaseSpace Project_id>
+Usage:<br/>
+```
+$ cdc_qual_metrics.sh -p <BaseSpace Project_id>
 
- 
+``` 
