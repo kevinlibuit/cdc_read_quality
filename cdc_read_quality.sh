@@ -21,7 +21,7 @@ Final <project_id>_readMetrics.tsv will be placed within the output_dir.
 
 Usage:
 
-cdc_qual_metrics.sh -p <BaseSpace_project>
+cdc_read_quality.sh -p <BaseSpace_project>
 
 -p: name of the BaseSpace project with reads of interest
 

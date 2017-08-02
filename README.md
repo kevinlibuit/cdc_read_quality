@@ -6,6 +6,6 @@ Dependencies: <br/>
 
 Usage:<br/>
 ```
-$ cdc_qual_metrics.sh -p <BaseSpace Project_id>
+$ cdc_read_quality.sh -p <BaseSpace Project_id>
 
 ``` 
