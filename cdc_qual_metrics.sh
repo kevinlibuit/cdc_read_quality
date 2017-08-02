@@ -21,10 +21,9 @@ Final <project_id>_readMetrics.tsv will be placed within the output_dir.
 
 Usage:
 
-cdc_qual_metrics.sh -i <BaseSpace_project> -o <output_directory>
+cdc_qual_metrics.sh -p <BaseSpace_project>
 
--i: name of the BaseSpace project with reads of interest
--o: name of the directory in which sym links will be created
+-p: name of the BaseSpace project with reads of interest
 
 "
 while test $# -gt 0; do
