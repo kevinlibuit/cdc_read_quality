@@ -62,7 +62,7 @@ link_reads_from_bsproj.sh -i ${project_id} -o ${project_id}
 if ls ${project_id}/raw_reads/*.fastq.gz 1> /dev/null 2>&1;
 then
   echo "Getting quality metrics..."
-  run_assembly_readMetrics.pl --fast ${project_id}/raw_reads/*.fastq.gz -e 5000000 | sort -k3,3n > ${project_id}/${project_id}_readMetrics.tsv
+  run_assembly_readMetrics.pl --fast ${project_id}/raw_reads/*.fastq.gz -e 5000000  > ${project_id}/${project_id}_readMetrics.tsv
   echo "Done! Quality metrics are in ${project_id}/${project_id}_readMetrics.tsv and can be viewed in Microsoft Excel." 
 else
   echo ${ERROR}
