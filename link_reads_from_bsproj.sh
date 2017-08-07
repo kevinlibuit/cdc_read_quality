@@ -61,10 +61,11 @@ if ls ~/BaseSpace/Projects/${input_dir}/Samples/*/Files/*.fastq.gz 1> /dev/null 
 then
   mkdir ${output_dir}/raw_reads -p
   ln -s ~/BaseSpace/Projects/${input_dir}/Samples/*/Files/*.fastq.gz ${output_dir}/raw_reads/
-  echo "Reads from BaseSpace project ${input_dir} have been linked linked to ${output_dir}/raw_reads/raw_reads."
+  echo "Reads from BaseSpace project ${input_dir} have been linked linked to ${output_dir}/raw_reads/."
 
 else
-  echo "No read files found in BaseSpace project ${input_dir}. Please enter valid BaseSpace project and ensure ~/BaseSpace is properly mounted"
+  echo "ERROR:: No read files found in BaseSpace project ${input_dir}. Please enter valid BaseSpace project and ensure ~/BaseSpace is properly mounted"
+  exit 1
 fi
 
 
