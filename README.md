@@ -8,9 +8,9 @@ Dependencies: <br/>
 
 Get quality metrics on raw read files:
 ```
-$ raw_read_quality.sh -p <BaseSpace Project_id> - e <genome_size>
+$ raw_read_quality.sh -p <BaseSpace Project_id>  -e <genome_size>
 ```
 Shuffle and trim files first, then get quality metrics:
 ```
-$ clean_read_quality.sh -p <BaseSpace Project_id> - e <genome_size>
+$ clean_read_quality.sh -p <BaseSpace Project_id> -e <genome_size>
 ```
