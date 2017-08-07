@@ -14,17 +14,23 @@ $ basemount ~/BaseSpace
 
 ...and follow prompts to properly mount BaseSpace profile to the new directory.
 
-A sym link for read files (fastq.gz) within a BaseSpace project will be in <output_dir>/raw_reads/.
-
+Sym links for read files (fastq.gz) within a BaseSpace project will be made in ./<output_dir>/raw_reads/.
 Final <project_id>_readMetrics.tsv will be placed within the output_dir.
+
+NOTE: <output_dir> = project_id
+
+
+###################
+Usage:
+
 
 
 Usage:
 
-cdc_read_quality.sh -p <BaseSpace_project>
+cdc_read_quality.sh -p <BaseSpace_project> -gs <genome_size>
 
 -p: name of the BaseSpace project with reads of interest
-
+-gs: expected size of genome in bp
 "
 while test $# -gt 0; do
         case "$1" in
@@ -46,6 +52,21 @@ while test $# -gt 0; do
                         project_id=`echo $1 | sed -e 's/^[^=]*=//g'`
                         shift
                         ;;
+i                -gs)
+                        shift
+                        if test $# -gt 0; then
+                                genome_size=$1
+                        else
+                                echo "genome size not specified"
+                                exit 1
+                        fi
+                        shift
+                        ;;
+                --genome_size*)
+                        genome_size=`echo $1 | sed -e 's/^[^=]*=//g'`
+                        shift
+                        ;;
+
                 *)
                         break
                         ;;
@@ -57,12 +78,16 @@ ERROR="ERROR:: No readMetrics genreated. See message above or use cdc_qual_metri
 #Link reads to output_dir
 echo "Linking reads from BaseSpace Proejct... "
 link_reads_from_bsproj.sh -i ${project_id} -o ${project_id}
+if [ ! -f ${project_id}/raw_reads/*fastq.gz ]; then
+  echo ${ERROR} 
+  exit 1
+fi
 
 
 if ls ${project_id}/raw_reads/*.fastq.gz 1> /dev/null 2>&1;
 then
   echo "Getting quality metrics..."
-  run_assembly_readMetrics.pl --fast ${project_id}/raw_reads/*.fastq.gz -e 5000000  > ${project_id}/${project_id}_readMetrics.tsv
+  run_assembly_readMetrics.pl --fast ${project_id}/raw_reads/*.fastq.gz -e ${genome_size}  > ${project_id}/${project_id}_readMetrics.tsv
   echo "Done! Quality metrics are in ${project_id}/${project_id}_readMetrics.tsv and can be viewed in Microsoft Excel." 
 else
   echo ${ERROR}
