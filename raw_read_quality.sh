@@ -75,10 +75,6 @@ ERROR="ERROR:: No readMetrics genreated. See message above or use cdc_qual_metri
 #Link reads to output_dir
 echo "Linking reads from BaseSpace Proejct... "
 link_reads_from_bsproj.sh -i ${project_id} -o ${project_id}
-if [ ! -f ${project_id}/raw_reads/*fastq.gz ]; then
-  echo ${ERROR} 
-  exit 1
-fi
 
 
 if ls ${project_id}/raw_reads/*.fastq.gz 1> /dev/null 2>&1;
