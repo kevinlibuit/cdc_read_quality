@@ -21,16 +21,13 @@ NOTE: <output_dir> = project_id
 
 
 ###################
-Usage:
-
-
 
 Usage:
 
-cdc_read_quality.sh -p <BaseSpace_project> -gs <genome_size>
+cdc_read_quality.sh -p <BaseSpace_project> -e <genome_size>
 
 -p: name of the BaseSpace project with reads of interest
--gs: expected size of genome in bp
+-e: expected size of genome in bp
 "
 while test $# -gt 0; do
         case "$1" in
@@ -52,7 +49,7 @@ while test $# -gt 0; do
                         project_id=`echo $1 | sed -e 's/^[^=]*=//g'`
                         shift
                         ;;
-i                -gs)
+                -e)
                         shift
                         if test $# -gt 0; then
                                 genome_size=$1
@@ -62,7 +59,7 @@ i                -gs)
                         fi
                         shift
                         ;;
-                --genome_size*)
+                --expected_size*)
                         genome_size=`echo $1 | sed -e 's/^[^=]*=//g'`
                         shift
                         ;;
